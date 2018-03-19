@@ -26,8 +26,7 @@ namespace LeitorThingspeak2
         {
             this.plotModel = new PlotModel();
         }
-
-
+        
         // TODO: Leitura por Field
         public PlotModel Create(string field,ThingSpeakResponse data)
         {
@@ -35,14 +34,15 @@ namespace LeitorThingspeak2
 
             var channel = data.Channel;
             var feeds = data.Feeds;
-
-            var title = channel.Field1;
-            plotModel.Title = title;
+            
+            var title = GetPropertyValue(channel, "Field" + field);
+            plotModel.Title = (string) title;
 
             var minDate = DateTimeAxis.ToDouble(feeds.ToList().First().Created_at);
             var maxDate = DateTimeAxis.ToDouble(feeds.ToList().Last().Created_at);
-            var minRead = (double) feeds.Min(f => f.Field1);
-            var maxRead = (double) feeds.Max(f => f.Field1);
+
+            var minRead = (double) feeds.Min(f => GetPropertyValue(f, "Field" + field));
+            var maxRead = (double) feeds.Max(f => GetPropertyValue(f, "Field" + field));
 
             plotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, Minimum = minDate, Maximum = maxDate, StringFormat = "M/d HH:mm" });
             plotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Minimum = minRead, Maximum = maxRead });
@@ -56,7 +56,7 @@ namespace LeitorThingspeak2
 
             foreach (Feed f in feeds)
             {
-                double value = f.Field1;
+                double value = (double) GetPropertyValue(f, "Field" + field);
                 double date = DateTimeAxis.ToDouble(f.Created_at);
                 series1.Points.Add(new DataPoint(date, value));
             }
@@ -65,12 +65,16 @@ namespace LeitorThingspeak2
 
             return plotModel;
         }
-
-
-        public PlotModel UpdateAsync()
+        
+        public PlotModel Update()
         {
             throw new NotImplementedException();
         }
         
+        private static object GetPropertyValue(object src, string propName)
+        {
+            return src.GetType().GetProperty(propName).GetValue(src, null);
+        }
+
     }
 }

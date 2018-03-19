@@ -18,6 +18,6 @@ namespace LeitorThingspeak2
     {
         T Create(string field, ThingSpeakResponse response);
 
-        T UpdateAsync();
+        T Update();
     }
 }

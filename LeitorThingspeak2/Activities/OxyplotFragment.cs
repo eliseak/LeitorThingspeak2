@@ -49,8 +49,9 @@ namespace LeitorThingspeak2
 
             var channel = Resources.GetString(Resource.String.channel);
             var field = Resources.GetString(Resource.String.field);
+            var results = Convert.ToInt32(Resources.GetString(Resource.String.num_results));
 
-            var response = await new RequestThingSpeakData(channel, field).DefaultAsync();
+            var response = await new RequestThingSpeakData(channel, field).CustomAsync(results);
 
             plotView.Model = new LinearOxyPlot().Create(field,response);
         }
