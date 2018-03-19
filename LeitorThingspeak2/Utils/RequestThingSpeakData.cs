@@ -50,9 +50,7 @@ namespace LeitorThingspeak2.Utils
                     var jsonDoc = await Task.Run(() => JsonObject.Load(stream));
                     // Console.Out.WriteLine("Response: {0}", jsonDoc.ToString()); // Teste
 
-                    var tsr = JsonConvert.DeserializeObject<ThingSpeakResponse>(jsonDoc.ToString());
-                    // Console.Out.WriteLine("Deserialization: {0}", tsr.ToString()); // Teste
-                    return tsr;
+                    return JsonConvert.DeserializeObject<ThingSpeakResponse>(jsonDoc.ToString());
                 }
             }
         }
