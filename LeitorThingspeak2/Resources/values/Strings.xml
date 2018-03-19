@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">LeitorThingspeak2</string>
+  
   <!--Canal do Thingspeak-->
   <string name="channel">9</string>
+
+  <!--Campo do canal no Thingspeak-->
+  <string name="field">1</string>
+  
   <!--Números de leituras que devem ser retornadas numa requisição-->
   <string name="num_results">5</string>
 </resources>

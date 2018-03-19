@@ -12,10 +12,10 @@ using Android.Widget;
 
 namespace LeitorThingspeak2.Model
 {
-    class ThingSpeakResponse
+    public class ThingSpeakResponse
     {
         public Channel Channel { get; set; }
-        public IList<Feed> Feeds { get; set; }
+        public List<Feed> Feeds { get; set; }
 
         public override string ToString()
         {

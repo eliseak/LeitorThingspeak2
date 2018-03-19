@@ -83,7 +83,7 @@
     <Compile Include="Model\Feed.cs" />
     <Compile Include="Utils\IChart.cs" />
     <Compile Include="Model\ThingSpeakResponse.cs" />
-    <Compile Include="Utils\OxyPlot.cs" />
+    <Compile Include="Utils\LinearOxyPlot.cs" />
     <Compile Include="Activities\ChartActivity.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\MatlabVisualizationActivity.cs" />

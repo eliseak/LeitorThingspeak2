@@ -14,10 +14,10 @@ using LeitorThingspeak2.Model;
 
 namespace LeitorThingspeak2
 {
-    interface IChart
-    { 
-        Task<IChart> CreateAsync(ThingSpeakResponse response);
+    public interface IChart<T>
+    {
+        T Create(string field, ThingSpeakResponse response);
 
-        Task<IChart> UpdateAsync(IChart chart);
+        T UpdateAsync();
     }
 }

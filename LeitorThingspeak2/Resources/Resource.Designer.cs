@@ -165,11 +165,14 @@ namespace LeitorThingspeak2
 			// aapt resource value: 0x7f040002
 			public const int channel = 2130968578;
 			
+			// aapt resource value: 0x7f040003
+			public const int field = 2130968579;
+			
 			// aapt resource value: 0x7f040000
 			public const int library_name = 2130968576;
 			
-			// aapt resource value: 0x7f040003
-			public const int num_results = 2130968579;
+			// aapt resource value: 0x7f040004
+			public const int num_results = 2130968580;
 			
 			static String()
 			{
