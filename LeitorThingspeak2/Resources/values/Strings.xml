@@ -6,7 +6,7 @@
   <string name="channel">9</string>
 
   <!--Campo do canal no Thingspeak-->
-  <string name="field">2</string>
+  <string name="field">1</string>
   
   <!--Números de leituras que devem ser retornadas numa requisição-->
   <string name="num_results">15</string>

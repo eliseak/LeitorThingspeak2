@@ -24,13 +24,5 @@ namespace LeitorThingspeak2
             SetContentView(Resource.Layout.References);
         }
 
-        //// Teste de requisição
-        //protected override async void OnStart()
-        //{
-        //    base.OnStart();
-        //    var channel = Resources.GetString(Resource.String.channel);
-        //    var teste = await new RequestThingSpeakData(channel).DefaultAsync();
-        //    Console.WriteLine(teste.ToString());
-        //}
     }
 }
