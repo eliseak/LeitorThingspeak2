@@ -4,16 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    android:background="#744253">
+    <TextView
+        android:text="Canal ####: Campo #"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#D7BEA8"
+        android:gravity="center_horizontal"
+        android:id="@+id/txt_titHandler" />
     <TextView
         android:text="0.0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="50dp"
+        android:textColor="#F3D9DC"
         android:gravity="center_horizontal"
         android:id="@+id/txt_readValue" />
     <TextView
         android:text="Atualizado em: --"
+        android:textColor="#C78283"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txt_readTime" />

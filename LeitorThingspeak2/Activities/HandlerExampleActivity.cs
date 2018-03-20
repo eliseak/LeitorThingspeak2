@@ -48,6 +48,9 @@ namespace LeitorThingspeak2.Activities
 
             if (response != null)
             {
+                TextView txt_titHandler = FindViewById<TextView>(Resource.Id.txt_titHandler);
+                txt_titHandler.Text = "Canal " + channel + " : Campo " + field;
+
                 TextView txt_readValue = FindViewById<TextView>(Resource.Id.txt_readValue);
                 TextView txt_readTime = FindViewById<TextView>(Resource.Id.txt_readTime);
 
