@@ -3,7 +3,7 @@
   <string name="app_name">LeitorThingspeak2</string>
   
   <!--Canal do Thingspeak-->
-  <string name="channel">9</string>
+  <string name="channel">305977</string>
 
   <!--Campo do canal no Thingspeak-->
   <string name="field">1</string>

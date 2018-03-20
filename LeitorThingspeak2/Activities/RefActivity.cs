@@ -13,7 +13,7 @@ using LeitorThingspeak2.Utils;
 
 namespace LeitorThingspeak2
 {
-    [Activity(Label = "ChartActivity")]
+    [Activity(Label = "RefActivity")]
     public class RefActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

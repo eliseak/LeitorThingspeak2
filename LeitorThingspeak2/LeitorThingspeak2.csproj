@@ -79,6 +79,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\HandlerExampleActivity.cs" />
     <Compile Include="Model\Channel.cs" />
     <Compile Include="Model\Feed.cs" />
     <Compile Include="Utils\Charts\IChartView.cs" />
@@ -120,6 +121,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\MatlabVisualization.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\HandlerExample.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

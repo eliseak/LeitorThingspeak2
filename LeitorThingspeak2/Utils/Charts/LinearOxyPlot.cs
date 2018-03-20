@@ -29,7 +29,6 @@ namespace LeitorThingspeak2
             this.plotModel = new PlotModel();
         }
         
-        // TODO: Leitura por Field
         public PlotView Create(string field,ThingSpeakResponse data)
         {
             if (data == null) throw new Exception("Dados nulos.");

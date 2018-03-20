@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using LeitorThingspeak2.Activities;
 
 namespace LeitorThingspeak2
 {
@@ -22,7 +23,15 @@ namespace LeitorThingspeak2
 
             var btn_ref = FindViewById<Button>(Resource.Id.btn_ref);
             btn_ref.Click += Btn_ref_Click;
+
+            var btn_han = FindViewById<Button>(Resource.Id.btn_handler);
+            btn_han.Click += Btn_han_Click;
             
+        }
+
+        private void Btn_han_Click(object sender, System.EventArgs e)
+        {
+            StartActivity(typeof(HandlerExampleActivity));
         }
 
         private void Btn_matVis_Click(object sender, System.EventArgs e)
