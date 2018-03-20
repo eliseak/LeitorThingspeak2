@@ -18,17 +18,19 @@ using OxyPlot.Xamarin.Android;
 
 namespace LeitorThingspeak2
 {
-    public class LinearOxyPlot : IChart<PlotModel>
+    public class LinearOxyPlot : IChartView<PlotView>
     {
+        private PlotView plotView;
         private PlotModel plotModel;
 
-        public LinearOxyPlot ()
+        public LinearOxyPlot (PlotView plotView)
         {
+            this.plotView = plotView;
             this.plotModel = new PlotModel();
         }
         
         // TODO: Leitura por Field
-        public PlotModel Create(string field,ThingSpeakResponse data)
+        public PlotView Create(string field,ThingSpeakResponse data)
         {
             if (data == null) throw new Exception("Dados nulos.");
 
@@ -63,10 +65,11 @@ namespace LeitorThingspeak2
 
             plotModel.Series.Add(series1);
 
-            return plotModel;
+            plotView.Model = plotModel;
+            return plotView;
         }
         
-        public PlotModel Update()
+        public PlotView Update()
         {
             throw new NotImplementedException();
         }

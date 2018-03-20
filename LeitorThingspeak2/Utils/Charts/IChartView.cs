@@ -14,7 +14,7 @@ using LeitorThingspeak2.Model;
 
 namespace LeitorThingspeak2
 {
-    public interface IChart<T>
+    public interface IChartView<T>
     {
         T Create(string field, ThingSpeakResponse response);
 

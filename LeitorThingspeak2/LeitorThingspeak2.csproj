@@ -81,9 +81,10 @@
   <ItemGroup>
     <Compile Include="Model\Channel.cs" />
     <Compile Include="Model\Feed.cs" />
-    <Compile Include="Utils\IChart.cs" />
+    <Compile Include="Utils\Charts\IChartView.cs" />
     <Compile Include="Model\ThingSpeakResponse.cs" />
-    <Compile Include="Utils\LinearOxyPlot.cs" />
+    <Compile Include="Utils\Charts\LinearMicrocharts.cs" />
+    <Compile Include="Utils\Charts\LinearOxyPlot.cs" />
     <Compile Include="Activities\ChartActivity.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\MatlabVisualizationActivity.cs" />
