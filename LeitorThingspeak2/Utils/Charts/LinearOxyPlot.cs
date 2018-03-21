@@ -71,8 +71,8 @@ namespace LeitorThingspeak2
             var minDate = DateTimeAxis.ToDouble(feeds.ToList().First().Created_at);
             var maxDate = DateTimeAxis.ToDouble(feeds.ToList().Last().Created_at);
 
-            var minRead = feeds.Min(f => f.GetValueFromField(field));
-            var maxRead = feeds.Max(f => f.GetValueFromField(field));
+            var minRead = feeds.Min(f => f.GetValueFromField(field) - 0.5);
+            var maxRead = feeds.Max(f => f.GetValueFromField(field) + 0.5);
 
             plotModel.Axes.Add(
                 new DateTimeAxis

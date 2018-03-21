@@ -24,8 +24,8 @@ namespace LeitorThingspeak2
             this.ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 
             // Adding tabs
-            AddTab("MicroCharts", Resource.Drawable.ic_show_chart_white_24dp, new MicrochartsFragment());
-            AddTab("Oxyplot", Resource.Drawable.ic_show_chart_white_24dp, new OxyplotFragment());
+            AddTab("MicroCharts", Resource.Drawable.ic_show_chart_black_24dp, new MicrochartsFragment());
+            AddTab("Oxyplot", Resource.Drawable.ic_show_chart_black_24dp, new OxyplotFragment());
         }
 
         /*
@@ -42,7 +42,7 @@ namespace LeitorThingspeak2
             tab.SetText(tabText);
             tab.SetIcon(iconResourceId);
 
-            // must set event handler for replacing tabs tab
+            // Event handler for replacing tabs tab when selected
             tab.TabSelected += delegate (object sender, ActionBar.TabEventArgs e)
             {
                 e.FragmentTransaction.Replace(Resource.Id.fragmentContainer, fragment);

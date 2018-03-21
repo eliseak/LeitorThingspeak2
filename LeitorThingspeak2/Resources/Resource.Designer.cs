@@ -52,7 +52,10 @@ namespace LeitorThingspeak2
 			public const int botao_ref = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int ic_show_chart_white_24dp = 2130837506;
+			public const int ic_show_chart_black_24dp = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int ic_show_chart_white_24dp = 2130837507;
 			
 			static Drawable()
 			{

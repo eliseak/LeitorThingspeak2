@@ -37,7 +37,7 @@ namespace LeitorThingspeak2.Utils.Charts
 
             //var chart = new BarChart() { Entries = entries };
             //var chart = new PointChart() { Entries = entries };
-            var chart = new LineChart() { Entries = entries, };
+            var chart = new LineChart() { Entries = entries, LineMode = LineMode.Straight };
 
             chartView.Chart = chart;
             return chartView;
