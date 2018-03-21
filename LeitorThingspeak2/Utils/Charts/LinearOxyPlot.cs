@@ -22,44 +22,33 @@ namespace LeitorThingspeak2
     public class LinearOxyPlot : IChartView<PlotView>
     {
         private PlotView plotView;
-        private PlotModel plotModel;
 
         public LinearOxyPlot (PlotView plotView)
         {
             this.plotView = plotView;
-            this.plotModel = new PlotModel();
         }
         
+
         public PlotView Create(string field,ThingSpeakResponse data)
         {
             if (data == null) throw new Exception("Dados nulos.");
 
-            var channel = data.Channel;
+            PlotModel plotModel = new PlotModel
+            {
+                Title = data.Channel.GetValueFromField(field)
+            };
+
             var feeds = data.Feeds;
+
+            InitializeAxis(plotModel, field, feeds);
+            InitializeLineSeries(plotModel, field, feeds);
             
-            var title = channel.GetValueFromField(field);
-            plotModel.Title = (string) title;
+            plotView.Model = plotModel;
+            return plotView;
+        }
 
-            var minDate = DateTimeAxis.ToDouble(feeds.ToList().First().Created_at);
-            var maxDate = DateTimeAxis.ToDouble(feeds.ToList().Last().Created_at);
-
-            var minRead = (double) feeds.Min(f => f.GetValueFromField(field));
-            var maxRead = (double) feeds.Max(f => f.GetValueFromField(field));
-
-            plotModel.Axes.Add(
-                new DateTimeAxis {
-                    Position = AxisPosition.Bottom,
-                    Minimum = minDate,
-                    Maximum = maxDate,
-                    StringFormat = "M/d HH:mm"
-                });
-            plotModel.Axes.Add(
-                new LinearAxis {
-                    Position = AxisPosition.Left,
-                    Minimum = minRead,
-                    Maximum = maxRead
-                });
-
+        private void InitializeLineSeries(PlotModel plotModel, string field, List<Feed> feeds)
+        {
             var series1 = new LineSeries
             {
                 MarkerType = MarkerType.Circle,
@@ -75,11 +64,34 @@ namespace LeitorThingspeak2
             }
 
             plotModel.Series.Add(series1);
-
-            plotView.Model = plotModel;
-            return plotView;
         }
-        
+
+        private void InitializeAxis(PlotModel plotModel, string field, List<Feed> feeds)
+        {
+            var minDate = DateTimeAxis.ToDouble(feeds.ToList().First().Created_at);
+            var maxDate = DateTimeAxis.ToDouble(feeds.ToList().Last().Created_at);
+
+            var minRead = feeds.Min(f => f.GetValueFromField(field));
+            var maxRead = feeds.Max(f => f.GetValueFromField(field));
+
+            plotModel.Axes.Add(
+                new DateTimeAxis
+                {
+                    Position = AxisPosition.Bottom,
+                    Minimum = minDate,
+                    Maximum = maxDate,
+                    StringFormat = "M/d HH:mm"
+                });
+            plotModel.Axes.Add(
+                new LinearAxis
+                {
+                    Position = AxisPosition.Left,
+                    Minimum = minRead,
+                    Maximum = maxRead
+                });
+        }
+
+
         public PlotView Update()
         {
             throw new NotImplementedException();
