@@ -16,14 +16,24 @@ namespace LeitorThingspeak2.Activities
     [Activity(Label = "HandlerExampleActivity")]
     public class HandlerExampleActivity : Activity
     {
-        private Handler handler = new Handler();
+        private TextView txt_titHandler;
+        private TextView txt_readValue;
+        private TextView txt_readTime;
+
+        private Handler handler;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Create your application here
             SetContentView(Resource.Layout.HandlerExample);
-            
+
+            txt_titHandler = FindViewById<TextView>(Resource.Id.txt_titHandler);
+            txt_readValue = FindViewById<TextView>(Resource.Id.txt_readValue);
+            txt_readTime = FindViewById<TextView>(Resource.Id.txt_readTime);
+
+            handler = new Handler();
             handler.PostDelayed(RequestValueAsync, 5000);
         }
 
@@ -48,28 +58,19 @@ namespace LeitorThingspeak2.Activities
 
             if (response != null)
             {
-                TextView txt_titHandler = FindViewById<TextView>(Resource.Id.txt_titHandler);
                 txt_titHandler.Text = "Canal " + channel + " : Campo " + field;
 
-                TextView txt_readValue = FindViewById<TextView>(Resource.Id.txt_readValue);
-                TextView txt_readTime = FindViewById<TextView>(Resource.Id.txt_readTime);
-
-                var text = GetPropertyValue(response.Feeds.FirstOrDefault(), "Field" + field).ToString();
-
+                var text = PropValueSearcher.ByName(response.Feeds.FirstOrDefault(), "Field" + field).ToString();
                 if (field == "1") text += "°C";
                 else if (field == "2") text += "°F";
 
                 txt_readValue.Text = text;
-
                 txt_readTime.Text = "Atualizado em: " + DateTime.Now;
             }
+
             handler.PostDelayed(RequestValueAsync, 5000);
 
         }
-
-        private static object GetPropertyValue(object src, string propName)
-        {
-            return src.GetType().GetProperty(propName).GetValue(src, null);
-        }
+        
     }
 }

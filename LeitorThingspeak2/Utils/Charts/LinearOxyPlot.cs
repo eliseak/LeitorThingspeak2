@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using LeitorThingspeak2.Model;
+using LeitorThingspeak2.Utils;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
@@ -36,14 +37,14 @@ namespace LeitorThingspeak2
             var channel = data.Channel;
             var feeds = data.Feeds;
             
-            var title = GetPropertyValue(channel, "Field" + field);
+            var title = PropValueSearcher.ByName(channel, "Field" + field);
             plotModel.Title = (string) title;
 
             var minDate = DateTimeAxis.ToDouble(feeds.ToList().First().Created_at);
             var maxDate = DateTimeAxis.ToDouble(feeds.ToList().Last().Created_at);
 
-            var minRead = (double) feeds.Min(f => GetPropertyValue(f, "Field" + field));
-            var maxRead = (double) feeds.Max(f => GetPropertyValue(f, "Field" + field));
+            var minRead = (double) feeds.Min(f => PropValueSearcher.ByName(f, "Field" + field));
+            var maxRead = (double) feeds.Max(f => PropValueSearcher.ByName(f, "Field" + field));
 
             plotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, Minimum = minDate, Maximum = maxDate, StringFormat = "M/d HH:mm" });
             plotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Minimum = minRead, Maximum = maxRead });
@@ -57,7 +58,7 @@ namespace LeitorThingspeak2
 
             foreach (Feed f in feeds)
             {
-                double value = (double) GetPropertyValue(f, "Field" + field);
+                double value = (double) PropValueSearcher.ByName(f, "Field" + field);
                 double date = DateTimeAxis.ToDouble(f.Created_at);
                 series1.Points.Add(new DataPoint(date, value));
             }
@@ -71,11 +72,6 @@ namespace LeitorThingspeak2
         public PlotView Update()
         {
             throw new NotImplementedException();
-        }
-        
-        private static object GetPropertyValue(object src, string propName)
-        {
-            return src.GetType().GetProperty(propName).GetValue(src, null);
         }
 
     }

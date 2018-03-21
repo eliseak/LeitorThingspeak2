@@ -23,6 +23,7 @@ namespace LeitorThingspeak2
 {
     public class MicrochartsFragment : Fragment
     {
+        private View view;
         private ChartView chartView;
 
         public override void OnCreate(Bundle savedInstanceState)
@@ -35,9 +36,9 @@ namespace LeitorThingspeak2
         {
             // Use this to return your custom view for this Fragment
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
-            base.OnCreateView(inflater, container, savedInstanceState);
+            base.OnCreateView(inflater, container, savedInstanceState); 
 
-            var view = inflater.Inflate(Resource.Layout.MicrochartTab, container, false);
+            view = inflater.Inflate(Resource.Layout.MicrochartTab, container, false);
             chartView = view.FindViewById<ChartView>(Resource.Id.chartView);
 
             return view;

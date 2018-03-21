@@ -46,7 +46,7 @@ namespace LeitorThingspeak2.Utils.Charts
 
         private void AddEntry(Feed f, List<Entry> entries, string field)
         {
-            var value = (float)(double) GetPropertyValue(f, "Field" + field);
+            var value = (float)(double) PropValueSearcher.ByName(f, "Field" + field);
 
             entries.Add(new Entry(value)
             {
@@ -62,9 +62,5 @@ namespace LeitorThingspeak2.Utils.Charts
             throw new NotImplementedException();
         }
 
-        private static object GetPropertyValue(object src, string propName)
-        {
-            return src.GetType().GetProperty(propName).GetValue(src, null);
-        }
     }
 }
