@@ -60,7 +60,7 @@ namespace LeitorThingspeak2.Activities
             {
                 txt_titHandler.Text = "Canal " + channel + " : Campo " + field;
 
-                var text = PropValueSearcher.ByName(response.Feeds.FirstOrDefault(), "Field" + field).ToString();
+                var text = response.Feeds.FirstOrDefault().GetValueFromField(field).ToString();
                 if (field == "1") text += "°C";
                 else if (field == "2") text += "°F";
 

@@ -21,15 +21,11 @@ namespace LeitorThingspeak2
         public DateTime Updated_at { get; set; }
         public Int64 Last_entry_id { get; set; }
 
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
+        public string GetValueFromField(int fieldNumber)
+            => GetValueFromField(fieldNumber.ToString());
 
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public string GetValueFromField(string fieldNumber)
+            => Utils.PropValueSearcher.ByName(this, "Field" + fieldNumber).ToString();
 
         public override string ToString()
         {

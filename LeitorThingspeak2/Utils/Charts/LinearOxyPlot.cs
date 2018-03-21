@@ -37,17 +37,28 @@ namespace LeitorThingspeak2
             var channel = data.Channel;
             var feeds = data.Feeds;
             
-            var title = PropValueSearcher.ByName(channel, "Field" + field);
+            var title = channel.GetValueFromField(field);
             plotModel.Title = (string) title;
 
             var minDate = DateTimeAxis.ToDouble(feeds.ToList().First().Created_at);
             var maxDate = DateTimeAxis.ToDouble(feeds.ToList().Last().Created_at);
 
-            var minRead = (double) feeds.Min(f => PropValueSearcher.ByName(f, "Field" + field));
-            var maxRead = (double) feeds.Max(f => PropValueSearcher.ByName(f, "Field" + field));
+            var minRead = (double) feeds.Min(f => f.GetValueFromField(field));
+            var maxRead = (double) feeds.Max(f => f.GetValueFromField(field));
 
-            plotModel.Axes.Add(new DateTimeAxis { Position = AxisPosition.Bottom, Minimum = minDate, Maximum = maxDate, StringFormat = "M/d HH:mm" });
-            plotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Minimum = minRead, Maximum = maxRead });
+            plotModel.Axes.Add(
+                new DateTimeAxis {
+                    Position = AxisPosition.Bottom,
+                    Minimum = minDate,
+                    Maximum = maxDate,
+                    StringFormat = "M/d HH:mm"
+                });
+            plotModel.Axes.Add(
+                new LinearAxis {
+                    Position = AxisPosition.Left,
+                    Minimum = minRead,
+                    Maximum = maxRead
+                });
 
             var series1 = new LineSeries
             {
@@ -58,7 +69,7 @@ namespace LeitorThingspeak2
 
             foreach (Feed f in feeds)
             {
-                double value = (double) PropValueSearcher.ByName(f, "Field" + field);
+                double value = f.GetValueFromField(field);
                 double date = DateTimeAxis.ToDouble(f.Created_at);
                 series1.Points.Add(new DataPoint(date, value));
             }

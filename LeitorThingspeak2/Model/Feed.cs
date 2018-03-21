@@ -25,6 +25,12 @@ namespace LeitorThingspeak2
         public double Field7 { get; set; }
         public double Field8 { get; set; }
 
+        public double GetValueFromField(int fieldNumber) 
+            => GetValueFromField(fieldNumber.ToString());
+
+        public double GetValueFromField(string fieldNumber) 
+            => (double)Utils.PropValueSearcher.ByName(this, "Field" + fieldNumber);
+
         public override string ToString()
         {
             return "created_at=" + Created_at +

@@ -46,7 +46,7 @@ namespace LeitorThingspeak2.Utils.Charts
 
         private void AddEntry(Feed f, List<Entry> entries, string field)
         {
-            var value = (float)(double) PropValueSearcher.ByName(f, "Field" + field);
+            var value = (float) f.GetValueFromField(field);
 
             entries.Add(new Entry(value)
             {
