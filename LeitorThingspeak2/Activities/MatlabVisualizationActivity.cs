@@ -27,6 +27,13 @@ namespace LeitorThingspeak2
 
             webView = FindViewById<WebView>(Resource.Id.webView);
 
+            WebSettings webSettings = InitializeWebSettings(webView);
+
+            webView.LoadUrl("https://thingspeak.com/apps/matlab_visualizations/212571");
+        }
+
+        public WebSettings InitializeWebSettings(WebView webView)
+        {
             WebSettings webSettings = webView.Settings;
             webSettings.JavaScriptEnabled = true;
             webSettings.DomStorageEnabled = true;
@@ -36,11 +43,8 @@ namespace LeitorThingspeak2
             webSettings.DisplayZoomControls = false;
             webSettings.SetSupportZoom(true);
             webSettings.DefaultTextEncodingName = "utf-8";
-
-            webView.LoadUrl("https://thingspeak.com/apps/matlab_visualizations/212571");
+            return webSettings;
         }
-
-        
 
 
     }
