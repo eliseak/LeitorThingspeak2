@@ -82,23 +82,20 @@ namespace LeitorThingspeak2
 			// aapt resource value: 0x7f050008
 			public const int btn_ref = 2131034120;
 			
-			// aapt resource value: 0x7f05000b
-			public const int chartView = 2131034123;
+			// aapt resource value: 0x7f05000a
+			public const int chartView = 2131034122;
 			
 			// aapt resource value: 0x7f050000
 			public const int fragmentContainer = 2131034112;
 			
-			// aapt resource value: 0x7f050009
-			public const int img_matlabVis = 2131034121;
-			
 			// aapt resource value: 0x7f050004
 			public const int linearLayout1 = 2131034116;
 			
-			// aapt resource value: 0x7f05000c
-			public const int plot_view = 2131034124;
+			// aapt resource value: 0x7f05000b
+			public const int plot_view = 2131034123;
 			
-			// aapt resource value: 0x7f05000d
-			public const int textView1 = 2131034125;
+			// aapt resource value: 0x7f05000c
+			public const int textView1 = 2131034124;
 			
 			// aapt resource value: 0x7f050003
 			public const int txt_readTime = 2131034115;
@@ -106,29 +103,29 @@ namespace LeitorThingspeak2
 			// aapt resource value: 0x7f050002
 			public const int txt_readValue = 2131034114;
 			
-			// aapt resource value: 0x7f05000f
-			public const int txt_ref1_desc = 2131034127;
-			
-			// aapt resource value: 0x7f050010
-			public const int txt_ref1_link = 2131034128;
-			
 			// aapt resource value: 0x7f05000e
-			public const int txt_ref1_tit = 2131034126;
+			public const int txt_ref1_desc = 2131034126;
 			
-			// aapt resource value: 0x7f050012
-			public const int txt_ref2_desc = 2131034130;
+			// aapt resource value: 0x7f05000f
+			public const int txt_ref1_link = 2131034127;
 			
-			// aapt resource value: 0x7f050013
-			public const int txt_ref2_link = 2131034131;
+			// aapt resource value: 0x7f05000d
+			public const int txt_ref1_tit = 2131034125;
 			
 			// aapt resource value: 0x7f050011
-			public const int txt_ref2_tit = 2131034129;
+			public const int txt_ref2_desc = 2131034129;
+			
+			// aapt resource value: 0x7f050012
+			public const int txt_ref2_link = 2131034130;
+			
+			// aapt resource value: 0x7f050010
+			public const int txt_ref2_tit = 2131034128;
 			
 			// aapt resource value: 0x7f050001
 			public const int txt_titHandler = 2131034113;
 			
-			// aapt resource value: 0x7f05000a
-			public const int webViewIframe = 2131034122;
+			// aapt resource value: 0x7f050009
+			public const int webView = 2131034121;
 			
 			static Id()
 			{

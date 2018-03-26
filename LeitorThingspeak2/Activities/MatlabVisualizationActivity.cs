@@ -16,13 +16,28 @@ namespace LeitorThingspeak2
     [Activity(Label = "MatlabVisualizationActivity")]
     public class MatlabVisualizationActivity : Activity
     {
+
+        private WebView webView;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Create your application here
-            SetContentView(Resource.Layout.MatlabVisualization);
             
+            SetContentView(Resource.Layout.MatlabVisualization);
+
+            webView = FindViewById<WebView>(Resource.Id.webView);
+
+            WebSettings webSettings = webView.Settings;
+            webSettings.JavaScriptEnabled = true;
+            webSettings.DomStorageEnabled = true;
+            webSettings.LoadWithOverviewMode = true;
+            webSettings.UseWideViewPort = true;
+            webSettings.BuiltInZoomControls = true;
+            webSettings.DisplayZoomControls = false;
+            webSettings.SetSupportZoom(true);
+            webSettings.DefaultTextEncodingName = "utf-8";
+
+            webView.LoadUrl("https://thingspeak.com/apps/matlab_visualizations/212571");
         }
 
         
