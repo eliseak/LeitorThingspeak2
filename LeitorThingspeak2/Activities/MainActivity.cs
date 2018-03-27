@@ -26,7 +26,15 @@ namespace LeitorThingspeak2
 
             var btn_han = FindViewById<Button>(Resource.Id.btn_handler);
             btn_han.Click += Btn_han_Click;
+
+            var btn_hanChar = FindViewById<Button>(Resource.Id.btn_handlerChar);
+            btn_hanChar.Click += Btn_hanChar_Click;
             
+        }
+
+        private void Btn_hanChar_Click(object sender, System.EventArgs e)
+        {
+            StartActivity(typeof(HandlerChartActivity));
         }
 
         private void Btn_han_Click(object sender, System.EventArgs e)

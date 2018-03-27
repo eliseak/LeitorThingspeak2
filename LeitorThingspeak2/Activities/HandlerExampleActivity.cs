@@ -19,6 +19,8 @@ namespace LeitorThingspeak2.Activities
         private TextView txt_titHandler;
         private TextView txt_readValue;
         private TextView txt_readTime;
+        private TextView txt_descr;
+        private int time = 5000;
 
         private Handler handler;
 
@@ -32,9 +34,12 @@ namespace LeitorThingspeak2.Activities
             txt_titHandler = FindViewById<TextView>(Resource.Id.txt_titHandler);
             txt_readValue = FindViewById<TextView>(Resource.Id.txt_readValue);
             txt_readTime = FindViewById<TextView>(Resource.Id.txt_readTime);
+            txt_descr = FindViewById<TextView>(Resource.Id.txt_descr);
+
+            txt_descr.Text = "Dados atualizados automaticamente a cada " + time + " ms";
 
             handler = new Handler();
-            handler.PostDelayed(RequestValueAsync, 5000);
+            handler.PostDelayed(RequestValueAsync, time);
         }
 
         protected override void OnPause()
@@ -42,8 +47,7 @@ namespace LeitorThingspeak2.Activities
             base.OnPause();
             handler.RemoveCallbacks(RequestValueAsync);
         }
-
-
+        
         // TODO: Mover métodos abaixo
 
         private async void RequestValueAsync()

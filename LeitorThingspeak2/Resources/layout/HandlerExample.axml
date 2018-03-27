@@ -28,4 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txt_readTime" />
+    <TextView
+        android:text="Dados atualizados automaticamente a cada -- segundos"
+        android:textColor="#C78283"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_descr" />
 </LinearLayout>

@@ -12,10 +12,16 @@
         android:id="@+id/btn_char"
         android:background="@drawable/botao" />
     <Button
-        android:text="Handler"
+        android:text="Handler - Leitura Mais Recente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn_handler"
+        android:background="@drawable/botao" />
+    <Button
+        android:text="Handler - Gráficos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_handlerChar"
         android:background="@drawable/botao" />
     <Button
         android:text="Matlab Visualizations"

@@ -9,5 +9,5 @@
   <string name="field">1</string>
   
   <!--Números de leituras que devem ser retornadas numa requisição-->
-  <string name="num_results">12</string>
+  <string name="num_results">50</string>
 </resources>
