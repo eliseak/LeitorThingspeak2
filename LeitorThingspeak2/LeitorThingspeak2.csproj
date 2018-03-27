@@ -82,10 +82,10 @@
     <Compile Include="Activities\HandlerChartActivity.cs" />
     <Compile Include="Activities\HandlerExampleActivity.cs" />
     <Compile Include="Fragments\HandlerOxyplotFragment.cs" />
-    <Compile Include="Model\Channel.cs" />
-    <Compile Include="Model\Feed.cs" />
+    <Compile Include="Models\Channel.cs" />
+    <Compile Include="Models\Feed.cs" />
     <Compile Include="Utils\Charts\IChartView.cs" />
-    <Compile Include="Model\ThingSpeakResponse.cs" />
+    <Compile Include="Models\ThingSpeakResponse.cs" />
     <Compile Include="Utils\Charts\LinearMicrocharts.cs" />
     <Compile Include="Utils\Charts\LinearOxyPlot.cs" />
     <Compile Include="Activities\ChartActivity.cs" />
