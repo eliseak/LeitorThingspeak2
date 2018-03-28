@@ -16,8 +16,8 @@ namespace LeitorThingspeak2
 {
     public interface IChartView<T>
     {
-        T Create(string field, ThingSpeakResponse response);
+        T Create(ThingSpeakResponse response);
 
-        T Update();
+        T Update(IList<Feed> feeds);
     }
 }

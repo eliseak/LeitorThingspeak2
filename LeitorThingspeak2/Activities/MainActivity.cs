@@ -34,7 +34,7 @@ namespace LeitorThingspeak2
 
         private void Btn_hanChar_Click(object sender, System.EventArgs e)
         {
-            StartActivity(typeof(HandlerChartActivity));
+            StartActivity(typeof(AsyncChartActivity));
         }
 
         private void Btn_han_Click(object sender, System.EventArgs e)

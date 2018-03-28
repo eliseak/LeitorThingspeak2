@@ -14,7 +14,7 @@ using LeitorThingspeak2.Fragments;
 namespace LeitorThingspeak2.Activities
 {
     [Activity(Label = "HandlerChartActivity", Theme = "@android:style/Theme.DeviceDefault.Light")]
-    public class HandlerChartActivity : Activity
+    public class AsyncChartActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -26,7 +26,7 @@ namespace LeitorThingspeak2.Activities
 
             // Adding tabs
             // AddTab("MicroCharts", Resource.Drawable.ic_show_chart_black_24dp, new MicrochartsFragment());
-            AddTab("Oxyplot", Resource.Drawable.ic_show_chart_black_24dp, new HandlerOxyplotFragment());
+            AddTab("Oxyplot", Resource.Drawable.ic_show_chart_black_24dp, new AsyncOxyplotFragment());
         }
 
         void AddTab(string tabText, int iconResourceId, Fragment fragment)

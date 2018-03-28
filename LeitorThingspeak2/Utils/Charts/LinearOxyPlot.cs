@@ -22,14 +22,16 @@ namespace LeitorThingspeak2
     public class LinearOxyPlot : IChartView<PlotView>
     {
         private PlotView plotView;
+        private string field;
 
-        public LinearOxyPlot (PlotView plotView)
+        public LinearOxyPlot (PlotView plotView, string field)
         {
             this.plotView = plotView;
+            this.field = field;
         }
         
 
-        public PlotView Create(string field,ThingSpeakResponse data)
+        public PlotView Create(ThingSpeakResponse data)
         {
             if (data == null) throw new Exception("Dados nulos.");
 
@@ -40,14 +42,14 @@ namespace LeitorThingspeak2
 
             var feeds = data.Feeds;
 
-            InitializeAxis(plotModel, field, feeds);
-            InitializeLineSeries(plotModel, field, feeds);
+            InitializeAxis(plotModel, feeds);
+            InitializeLineSeries(plotModel, feeds);
             
             plotView.Model = plotModel;
             return plotView;
         }
 
-        private void InitializeLineSeries(PlotModel plotModel, string field, List<Feed> feeds)
+        private void InitializeLineSeries(PlotModel plotModel, IList<Feed> feeds)
         {
             var series1 = new LineSeries
             {
@@ -66,8 +68,10 @@ namespace LeitorThingspeak2
             plotModel.Series.Add(series1);
         }
 
-        private void InitializeAxis(PlotModel plotModel, string field, List<Feed> feeds)
+        private void InitializeAxis(PlotModel plotModel, IList<Feed> feeds)
         {
+            if (feeds == null) throw new ArgumentNullException(nameof(feeds));
+
             var minDate = DateTimeAxis.ToDouble(feeds.ToList().First().Created_at);
             var maxDate = DateTimeAxis.ToDouble(feeds.ToList().Last().Created_at);
 
@@ -92,9 +96,29 @@ namespace LeitorThingspeak2
         }
 
 
-        public PlotView Update()
+        public PlotView Update(IList<Feed> feeds)
         {
-            throw new NotImplementedException();
+            if (plotView.Model == null) throw new ArgumentNullException(nameof(plotView.Model));
+
+            LineSeries series1 = (LineSeries) plotView.Model.Series.FirstOrDefault();
+
+            foreach (Feed f in feeds)
+            {
+                double value = f.GetValueFromField(field);
+                double date = DateTimeAxis.ToDouble(f.Created_at);
+
+                var point = new DataPoint(date, value);
+
+                if (!series1.Points.Contains(point))
+                {
+                    series1.Points.Add(point);
+                }
+                
+            }
+
+            plotView.Model.InvalidatePlot(true); // Atualiza os dados
+
+            return plotView;
         }
 
     }

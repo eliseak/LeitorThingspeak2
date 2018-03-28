@@ -54,7 +54,7 @@ namespace LeitorThingspeak2
 
             var response = await new RequestThingSpeakData(channel, field).CustomAsync(results);
 
-            if (response != null) new LinearMicrocharts(chartView).Create(field, response);
+            if (response != null) new LinearMicrocharts(chartView, field).Create(response);
         }
 
     }

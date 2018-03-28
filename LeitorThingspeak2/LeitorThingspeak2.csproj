@@ -79,9 +79,9 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\HandlerChartActivity.cs" />
+    <Compile Include="Activities\AsyncChartActivity.cs" />
     <Compile Include="Activities\HandlerExampleActivity.cs" />
-    <Compile Include="Fragments\HandlerOxyplotFragment.cs" />
+    <Compile Include="Fragments\AsyncOxyplotFragment.cs" />
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\Feed.cs" />
     <Compile Include="Utils\Charts\IChartView.cs" />

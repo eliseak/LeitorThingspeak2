@@ -53,7 +53,7 @@ namespace LeitorThingspeak2
 
             var response = await new RequestThingSpeakData(channel, field).CustomAsync(results);
 
-            if (response != null) new LinearOxyPlot(plotView).Create(field, response);
+            if (response != null) new LinearOxyPlot(plotView, field).Create(response);
         }
         
     }

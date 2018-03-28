@@ -19,13 +19,15 @@ namespace LeitorThingspeak2.Utils.Charts
     class LinearMicrocharts : IChartView<ChartView>
     {
         private ChartView chartView;
+        private string field;
 
-        public LinearMicrocharts (ChartView chartView)
+        public LinearMicrocharts (ChartView chartView, string field)
         {
             this.chartView = chartView;
+            this.field = field;
         }
 
-        public ChartView Create(string field, ThingSpeakResponse response)
+        public ChartView Create(ThingSpeakResponse response)
         {
             var feeds = response.Feeds;
             var channel = response.Channel;
@@ -57,7 +59,7 @@ namespace LeitorThingspeak2.Utils.Charts
             });
         }
 
-        public ChartView Update()
+        public ChartView Update(IList<Feed> feeds)
         {
             throw new NotImplementedException();
         }
