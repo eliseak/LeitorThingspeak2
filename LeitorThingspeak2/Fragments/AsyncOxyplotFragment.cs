@@ -74,7 +74,14 @@ namespace LeitorThingspeak2.Fragments
         public override void OnPause()
         {
             base.OnPause();
+            try { 
             handler.RemoveCallbacks(UpdateChartAsync);
+            }
+            catch(Exception e)
+            {
+                Toast.MakeText(context, e.Message, ToastLength.Short).Show();
+            }
+
         }
     }
 
