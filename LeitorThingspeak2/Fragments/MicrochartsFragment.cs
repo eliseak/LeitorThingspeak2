@@ -1,23 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Json;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Util;
 using Android.Views;
-using Android.Widget;
 using LeitorThingspeak2.Utils;
 using LeitorThingspeak2.Utils.Charts;
-using Microcharts;
 using Microcharts.Droid;
-using SkiaSharp;
 
 /// <summary>
 /// Fragment que cria um gráfico com a bibliotada Microcharts
