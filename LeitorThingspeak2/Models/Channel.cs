@@ -1,5 +1,9 @@
 ﻿using System;
 
+/// <summary>
+/// Classe que guarda as informações do canal do ThingSpeak 
+/// </summary>
+
 namespace LeitorThingspeak2
 {
     public class Channel
@@ -21,9 +25,14 @@ namespace LeitorThingspeak2
         public DateTime Updated_at { get; set; }
         public Int64 Last_entry_id { get; set; }
 
+        // Sobrecarga 
         public string GetValueFromField(int fieldNumber)
             => GetValueFromField(fieldNumber.ToString());
 
+        /* 
+         *  Método que encontra o NOME do campo utilizando o número do campo como referência.
+         *  Um canal pode ter de 1 ~ 8 campos.
+         */
         public string GetValueFromField(string fieldNumber)
             => Utils.PropValueSearcher.ByName(this, "Field" + fieldNumber).ToString();
 

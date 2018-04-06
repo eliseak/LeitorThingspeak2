@@ -10,6 +10,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+/// <summary>
+/// Exibe o gráfico de um campo num canal do ThingSpeak.
+/// A leitura nas duas abas são iguais, mudando apenas a biblioteca que contrói o gráfico
+/// </summary>
+
 namespace LeitorThingspeak2
 {
     [Activity(Label = "ChartActivity", Theme = "@android:style/Theme.DeviceDefault.Light")]
@@ -23,18 +28,17 @@ namespace LeitorThingspeak2
             SetContentView(Resource.Layout.Chart);
             this.ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 
-            // Adding tabs
+            // Adicionando as tabs
             AddTab("MicroCharts", Resource.Drawable.ic_show_chart_black_24dp, new MicrochartsFragment());
             AddTab("Oxyplot", Resource.Drawable.ic_show_chart_black_24dp, new OxyplotFragment());
         }
 
         /*
-		 * This method is used to create and add dynamic tab view
+		 * Método para criar e adicionar tabs na View
 		 * @Param,
-		 *  tabText: title to be displayed in tab
-		 *  iconResourceId: image/resource id
-		 *  fragment: fragment reference
-		 * 
+		 *  tabText: Texto da tab
+		 *  iconResourceId: ID do ícone da tab
+		 *  fragment: referência do Fragment
 		*/
         void AddTab(string tabText, int iconResourceId, Fragment fragment)
         {

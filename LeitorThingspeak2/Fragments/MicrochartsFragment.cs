@@ -19,6 +19,10 @@ using Microcharts;
 using Microcharts.Droid;
 using SkiaSharp;
 
+/// <summary>
+/// Fragment que cria um gráfico com a bibliotada Microcharts
+/// </summary>
+
 namespace LeitorThingspeak2
 {
     public class MicrochartsFragment : Fragment
@@ -32,6 +36,7 @@ namespace LeitorThingspeak2
             
         }
 
+        // Inflando fragment
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
@@ -48,12 +53,14 @@ namespace LeitorThingspeak2
         {
             base.OnStart();
 
+            // Requisição de dados
             var channel = Resources.GetString(Resource.String.channel);
             var field = Resources.GetString(Resource.String.field);
             var results = Convert.ToInt32(Resources.GetString(Resource.String.num_results));
 
             var response = await new RequestThingSpeakData(channel, field).CustomAsync(results);
 
+            // Cria o gráfico com a biblioteca Microcharts
             if (response != null) new LinearMicrocharts(chartView, field).Create(response);
         }
 

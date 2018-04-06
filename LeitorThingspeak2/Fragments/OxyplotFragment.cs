@@ -31,6 +31,7 @@ namespace LeitorThingspeak2
             // Create your fragment here
         }
 
+        // Inflando o fragmento
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
@@ -47,12 +48,14 @@ namespace LeitorThingspeak2
         {
             base.OnStart();
 
+            // Requisição de dados
             var channel = Resources.GetString(Resource.String.channel);
             var field = Resources.GetString(Resource.String.field);
             var results = Convert.ToInt32(Resources.GetString(Resource.String.num_results));
 
             var response = await new RequestThingSpeakData(channel, field).CustomAsync(results);
 
+            // Cria o gráfico com a biblioteca Oxyplot
             if (response != null) new LinearOxyPlot(plotView, field).Create(response);
         }
         

@@ -14,6 +14,10 @@ using Microcharts;
 using Microcharts.Droid;
 using SkiaSharp;
 
+/// <summary>
+/// Classe que auxilia a criação do gráfico com Microcharts
+/// </summary>
+
 namespace LeitorThingspeak2.Utils.Charts
 {
     class LinearMicrocharts : IChartView<ChartView>
@@ -27,6 +31,7 @@ namespace LeitorThingspeak2.Utils.Charts
             this.field = field;
         }
 
+        // Método paea criar o gráfico 
         public ChartView Create(ThingSpeakResponse response)
         {
             var feeds = response.Feeds;
@@ -46,6 +51,7 @@ namespace LeitorThingspeak2.Utils.Charts
 
         }
 
+        // Método para adicionar pontos numa linha do gráfico
         private void AddEntry(Feed f, List<Entry> entries, string field)
         {
             var value = (float) f.GetValueFromField(field);
@@ -59,6 +65,7 @@ namespace LeitorThingspeak2.Utils.Charts
             });
         }
 
+        // TODO: Update Microcharts
         public ChartView Update(IList<Feed> feeds)
         {
             throw new NotImplementedException();

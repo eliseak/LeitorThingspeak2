@@ -10,6 +10,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+/// <summary>
+/// Classe para receber os dados do ThingSpeak
+/// (MOVER)
+/// </summary>
+
 namespace LeitorThingspeak2.Model
 {
     public class ThingSpeakResponse

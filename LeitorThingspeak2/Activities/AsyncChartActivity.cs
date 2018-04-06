@@ -11,6 +11,11 @@ using Android.Views;
 using Android.Widget;
 using LeitorThingspeak2.Fragments;
 
+/// <summary>
+/// Exibe o gráfico de um campo num canal do ThingSpeak.
+/// Possui a tab que atualiza automaticamente o gráfico Oxyplot.
+/// </summary>
+
 namespace LeitorThingspeak2.Activities
 {
     [Activity(Label = "HandlerChartActivity", Theme = "@android:style/Theme.DeviceDefault.Light")]
@@ -24,11 +29,11 @@ namespace LeitorThingspeak2.Activities
             SetContentView(Resource.Layout.Chart);
             this.ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 
-            // Adding tabs
-            // AddTab("MicroCharts", Resource.Drawable.ic_show_chart_black_24dp, new MicrochartsFragment());
+            // Adicionando a tab
             AddTab("Oxyplot", Resource.Drawable.ic_show_chart_black_24dp, new AsyncOxyplotFragment());
         }
 
+        // Método para adicionar tab
         void AddTab(string tabText, int iconResourceId, Fragment fragment)
         {
             var tab = this.ActionBar.NewTab();

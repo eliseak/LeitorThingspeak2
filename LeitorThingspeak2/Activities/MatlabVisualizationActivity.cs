@@ -11,6 +11,9 @@ using Android.Views;
 using Android.Webkit;
 using Android.Widget;
 
+/// <summary>
+/// Exibe gráfico iframe(WebView) - defeituoso
+/// </summary>
 namespace LeitorThingspeak2
 {
     [Activity(Label = "MatlabVisualizationActivity")]
@@ -30,10 +33,7 @@ namespace LeitorThingspeak2
             WebSettings webSettings = InitializeWebSettings(webView);
 
             webView.LoadUrl("https://thingspeak.com/apps/matlab_visualizations/212571");
-
-            //string HTMLText = "<html><body>" + 
-            //    "<iframe width='450' height='260' style='border: 1px solid #cccccc;' src='https://thingspeak.com/apps/matlab_visualizations/212571'></iframe></ body > </html>";
-            //webView.LoadData(HTMLText, "text/html", null);
+            
         }
 
         public WebSettings InitializeWebSettings(WebView webView)

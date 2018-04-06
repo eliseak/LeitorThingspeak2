@@ -30,7 +30,7 @@ namespace LeitorThingspeak2
             this.field = field;
         }
         
-
+        // Método que cria o gráfico 
         public PlotView Create(ThingSpeakResponse data)
         {
             if (data == null) throw new Exception("Dados nulos.");
@@ -39,9 +39,10 @@ namespace LeitorThingspeak2
             {
                 Title = data.Channel.GetValueFromField(field)
             };
-
+            
             var feeds = data.Feeds;
-
+            
+            // Inicializações
             InitializeAxis(plotModel, feeds);
             InitializeLineSeries(plotModel, feeds);
             
@@ -49,6 +50,7 @@ namespace LeitorThingspeak2
             return plotView;
         }
 
+        // Método que inicializa uma linha do gráfico
         private void InitializeLineSeries(PlotModel plotModel, IList<Feed> feeds)
         {
             var series1 = new LineSeries
@@ -58,6 +60,7 @@ namespace LeitorThingspeak2
                 MarkerStroke = OxyColors.White
             };
 
+            // Adiciona cada feed como ponto no gráfico
             foreach (Feed f in feeds)
             {
                 double value = f.GetValueFromField(field);
@@ -65,9 +68,11 @@ namespace LeitorThingspeak2
                 series1.Points.Add(new DataPoint(date, value));
             }
 
+            // Adiciona a linha no gráfico
             plotModel.Series.Add(series1);
         }
 
+        // Método que inicializa os eixcos do gráfico
         private void InitializeAxis(PlotModel plotModel, IList<Feed> feeds)
         {
             if (feeds == null) throw new ArgumentNullException(nameof(feeds));
@@ -95,7 +100,7 @@ namespace LeitorThingspeak2
                 });
         }
 
-
+        // Método que atualiza o gráfico
         public PlotView Update(IList<Feed> feeds)
         {
             if (plotView.Model == null) throw new ArgumentNullException(nameof(plotView.Model));

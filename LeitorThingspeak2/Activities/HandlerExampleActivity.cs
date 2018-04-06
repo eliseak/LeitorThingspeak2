@@ -22,7 +22,7 @@ namespace LeitorThingspeak2.Activities
         private TextView txt_descr;
         private int time = 5000;
 
-        private Handler handler;
+        private Handler handler; // Objeto que chama o método para atualizar os dados exibidos
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -37,7 +37,7 @@ namespace LeitorThingspeak2.Activities
             txt_descr = FindViewById<TextView>(Resource.Id.txt_descr);
 
             txt_descr.Text = "Dados atualizados automaticamente a cada " + time + " ms";
-
+            
             handler = new Handler();
             handler.PostDelayed(RequestValueAsync, time);
         }
@@ -45,21 +45,31 @@ namespace LeitorThingspeak2.Activities
         protected override void OnPause()
         {
             base.OnPause();
-            handler.RemoveCallbacks(RequestValueAsync);
+
+            // Encerra handler
+            try
+            {
+                handler.RemoveCallbacks(RequestValueAsync);
+            }
+            catch (Exception e)
+            {
+                Toast.MakeText(this, e.Message, ToastLength.Short).Show();
+            }
         }
         
-        // TODO: Mover métodos abaixo
-
+        // Requisita os dados do ThingSpeak e exibe na tela
         private async void RequestValueAsync()
         {
             Toast.MakeText(this ,"!", ToastLength.Short).Show();
 
+            // Requisição dos dados
             var channel = Resources.GetString(Resource.String.channel);
             var field = Resources.GetString(Resource.String.field);
             var results = Convert.ToInt32(Resources.GetString(Resource.String.num_results));
 
             var response = await new RequestThingSpeakData(channel, field).LastOneAscync();
 
+            // Exibição dos dados
             if (response != null)
             {
                 txt_titHandler.Text = "Canal " + channel + " : Campo " + field;
@@ -72,7 +82,8 @@ namespace LeitorThingspeak2.Activities
                 txt_readTime.Text = "Atualizado em: " + DateTime.Now;
             }
 
-            handler.PostDelayed(RequestValueAsync, 5000);
+            // Ação será repetida novamente em 5s (tempo de "time")
+            handler.PostDelayed(RequestValueAsync, time);
 
         }
         

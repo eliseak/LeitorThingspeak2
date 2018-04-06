@@ -22,7 +22,7 @@ namespace LeitorThingspeak2.Utils
     public class RequestThingSpeakData
     {
         private static string URL = "https://api.thingspeak.com/channels/";
-        private static int maxResults = 8000;
+        private static int maxResults = 8000; // Valor máximo suportado pelo ThingSpeak
         private string channel;
         private string field;
         private string api_key; // Chave para canais privados
@@ -40,7 +40,7 @@ namespace LeitorThingspeak2.Utils
         }
 
         /// <summary>
-        /// Envia a requisição e transforma o retorno num objeto ThingSpeakResponse
+        /// Requisita os dados de um canal do ThingSpeak
         /// </summary>
         /// <param name="request">Objeto de requisição</param>
         /// <returns>Resposta da requisição</returns>
@@ -65,11 +65,13 @@ namespace LeitorThingspeak2.Utils
             }
         }
 
+        // Retorna as 100 últimas leituras recebida no canal
         public async Task<ThingSpeakResponse> DefaultAsync()
         {
             return await CustomAsync(100);
         }
-
+        
+        // Retorna a última leitura do canal recebida no canal
         public async Task<ThingSpeakResponse> LastOneAscync()
         {
             return await CustomAsync(1);
@@ -82,15 +84,18 @@ namespace LeitorThingspeak2.Utils
         /// <returns>Dados das últimas [results] leituras de um canal no ThingSpeak </returns>
         public async Task<ThingSpeakResponse> CustomAsync(int results)
         {
+            // Validação
             if (results < 1 || results > maxResults)
                 throw new Exception("O valor deve ser entre 1 e " + maxResults.ToString());
 
+            // String da URL
             string req_url = URL + channel + "/field/" + field + "?";
 
             if (!String.IsNullOrWhiteSpace(api_key)) req_url += "api_key=" + api_key + "&";
 
             req_url += "results=" + results.ToString();
 
+            // Requisição HTTP GET
             var request = (HttpWebRequest)HttpWebRequest.Create(new Uri(req_url));
             request.ContentType = "application/json";
             request.Method = "GET";

@@ -13,6 +13,10 @@ using Android.Widget;
 using LeitorThingspeak2.Utils;
 using OxyPlot.Xamarin.Android;
 
+/// <summary>
+/// Atualiza automaticamente o gráfico Oxyplot por meio do objeto Handler.
+/// </summary>
+
 namespace LeitorThingspeak2.Fragments
 {
     public class AsyncOxyplotFragment : Fragment
@@ -29,6 +33,7 @@ namespace LeitorThingspeak2.Fragments
             // Create your fragment here
         }
 
+        // Inflando o Fragment
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
@@ -45,35 +50,46 @@ namespace LeitorThingspeak2.Fragments
         {
             base.OnStart();
 
+            // Requisição de dados
             var channel = Resources.GetString(Resource.String.channel);
             var field = Resources.GetString(Resource.String.field);
             var results = Convert.ToInt32(Resources.GetString(Resource.String.num_results));
 
             var response = await new RequestThingSpeakData(channel, field).CustomAsync(results);
 
+
+            // Cria o gráfico
             if (response != null) new LinearOxyPlot(plotView, field).Create(response);
 
+            // Seta handler para atualizar os dados 
             handler = new Handler();
             handler.PostDelayed(UpdateChartAsync, time);
 
         }
 
+        // Método que atualiza o gráfico
         private async void UpdateChartAsync()
         {
             Toast.MakeText(context, "!", ToastLength.Short).Show();
-
+            
+            // Requisição dos dados
             var channel = Resources.GetString(Resource.String.channel);
             var field = Resources.GetString(Resource.String.field);
 
             var response = await new RequestThingSpeakData(channel, field).CustomAsync(25);
 
+            // Atualiza o gráfico
             if (response != null) new LinearOxyPlot(plotView, field).Update(response.Feeds);
+            
+            // Seta handler para ser chamado novamente
             handler.PostDelayed(UpdateChartAsync, time);
         }
 
         public override void OnPause()
         {
             base.OnPause();
+
+            // Encerra handler
             try { 
             handler.RemoveCallbacks(UpdateChartAsync);
             }

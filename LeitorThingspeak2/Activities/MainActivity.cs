@@ -3,6 +3,10 @@ using Android.Widget;
 using Android.OS;
 using LeitorThingspeak2.Activities;
 
+/// <summary>
+/// Tela do Menu Principal
+/// </summary>
+
 namespace LeitorThingspeak2
 {
     [Activity(Label = "LeitorThingspeak2", MainLauncher = true)]
@@ -31,6 +35,8 @@ namespace LeitorThingspeak2
             btn_hanChar.Click += Btn_hanChar_Click;
             
         }
+
+        // Eventos de clique do botão
 
         private void Btn_hanChar_Click(object sender, System.EventArgs e)
         {

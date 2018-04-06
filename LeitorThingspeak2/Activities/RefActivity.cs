@@ -11,6 +11,10 @@ using Android.Views;
 using Android.Widget;
 using LeitorThingspeak2.Utils;
 
+/// <summary>
+/// Exibe as bibliotes utilizadas
+/// </summary>
+
 namespace LeitorThingspeak2
 {
     [Activity(Label = "RefActivity")]

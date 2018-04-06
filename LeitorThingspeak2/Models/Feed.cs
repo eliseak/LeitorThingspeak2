@@ -10,6 +10,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+/// <summary>
+/// Classe que possui os dados de leitura dos campos (fields) 
+/// </summary>
+
 namespace LeitorThingspeak2
 {
     public class Feed
@@ -25,9 +29,14 @@ namespace LeitorThingspeak2
         public double Field7 { get; set; }
         public double Field8 { get; set; }
 
+        // Sobrecarga
         public double GetValueFromField(int fieldNumber) 
             => GetValueFromField(fieldNumber.ToString());
 
+        /* 
+         *  Método que encontra o VALOR do campo utilizando o número do campo como referência.
+         *  Um canal pode ter de 1 ~ 8 campos.
+         */
         public double GetValueFromField(string fieldNumber) 
             => (double)Utils.PropValueSearcher.ByName(this, "Field" + fieldNumber);
 

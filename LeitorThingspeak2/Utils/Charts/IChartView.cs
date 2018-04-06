@@ -12,6 +12,11 @@ using Android.Views;
 using Android.Widget;
 using LeitorThingspeak2.Model;
 
+/// <summary>
+/// Interface para criar gráficos
+/// (VERIFICAR)
+/// </summary>
+
 namespace LeitorThingspeak2
 {
     public interface IChartView<T>
