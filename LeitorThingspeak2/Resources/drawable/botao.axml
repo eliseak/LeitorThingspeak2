@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Desenho do botão no Menu Principal -->
+
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+  
+  <!-- Aparência do botão quando pressionado -->
   <item android:state_pressed="true" >
+    <!-- Formato -->
     <shape>
+      <!-- Cor -->
       <solid
           android:color="#878E88" />
+      <!-- Contorno -->
       <stroke
           android:width="1dp"
           android:color="#878E88" />
+      <!-- Borda -->
       <corners
           android:radius="75dp" />
       <padding
@@ -16,13 +25,19 @@
           android:bottom="10dp" />
     </shape>
   </item>
+  
+  <!-- Aparência do botão no estado normal -->
   <item>
+    <!-- Formato -->
     <shape>
+      <!-- Interno -->
       <solid
           android:color="#96C0B7" />
+      <!-- Contorno -->
       <stroke
           android:width="1dp"
           android:color="#96C0B7" />
+      <!-- Borda -->
       <corners
           android:radius="75dp" />
       <padding
